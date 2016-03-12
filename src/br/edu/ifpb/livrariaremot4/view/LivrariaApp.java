@@ -54,14 +54,8 @@ public class LivrariaApp extends javax.swing.JFrame {
 
         removerButton.setText("Remover");
 
-        livrosTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
+        livrosTable.setModel(new LivroTableModel()
+        );
         jScrollPane1.setViewportView(livrosTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
