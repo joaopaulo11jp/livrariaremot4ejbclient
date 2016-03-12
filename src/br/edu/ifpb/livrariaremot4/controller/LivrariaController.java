@@ -13,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import livrariaremot4client.LivrariaRemot4Client;
 
 /**
  *
@@ -45,30 +44,40 @@ public class LivrariaController {
     }
     
     public Livro addLivro(String titulo, String editora, String isbn, String edicao, String autor){
-        
+        Livro l = lm.cadastrar(titulo, editora, isbn, edicao, autor);
+        this.refreshList();
+        return l;
     }
     
     public Livro removerLivro(Long codigo){
-        
+        Livro l = lm.remover(codigo);
+        this.refreshList();
+        return l;
     }
     
     public Livro alterarLivro(Long codigo, String titulo, String editora, String isbn, String edicao, String autor){
-        
+        Livro l = lm.alterarLivro(new Livro(codigo, titulo, editora, isbn, edicao, autor));
+        this.refreshList();
+        return l;
     }
     
     public void consultaPorTitulo(String titulo){
-        
+        this.livros = lm.consultarPorTitulo(titulo);
     }
     
     public void consultaPorAutor(String autor){
-        
+        this.livros = lm.consultarPorAutor(autor);
     }
     
     public void consultaPorIsbn(String isbn){
-        
+        this.livros = lm.consultarPorISBN(isbn);
     }
     
     private void refreshList(){
         this.livros = lm.getTodosOsLivros();
+    }
+    
+    public List<Livro> listaDeLivros(){
+        return this.livros;
     }
 }
