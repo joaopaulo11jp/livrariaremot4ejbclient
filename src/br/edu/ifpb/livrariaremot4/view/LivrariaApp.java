@@ -5,15 +5,9 @@
  */
 package br.edu.ifpb.livrariaremot4.view;
 
-import br.edu.ifpb.livrariaremot4.interfaces.LivroManagerBeanRemote;
 import br.edu.ifpb.livrariaremot4.model.Livro;
 import java.util.List;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import livrariaremot4client.LivrariaRemot4Client;
 
 /**
  *
@@ -28,6 +22,8 @@ public class LivrariaApp extends javax.swing.JFrame {
      */
     public LivrariaApp() {        
         initComponents();
+        setTitle("LivrariaRemot4");
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -45,6 +41,8 @@ public class LivrariaApp extends javax.swing.JFrame {
         removerButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         livrosTable = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +56,10 @@ public class LivrariaApp extends javax.swing.JFrame {
         );
         jScrollPane1.setViewportView(livrosTable);
 
+        jButton1.setText("Consulta");
+
+        jButton2.setText("Atualizar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -66,13 +68,19 @@ public class LivrariaApp extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(inserirButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(alterarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removerButton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                        .addComponent(removerButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +89,9 @@ public class LivrariaApp extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inserirButton)
                     .addComponent(alterarButton)
-                    .addComponent(removerButton))
+                    .addComponent(removerButton)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -145,6 +155,8 @@ public class LivrariaApp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alterarButton;
     private javax.swing.JButton inserirButton;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable livrosTable;
