@@ -5,9 +5,11 @@
  */
 package br.edu.ifpb.livrariaremot4.view;
 
+import br.edu.ifpb.livrariaremot4.controller.LivrariaController;
 import br.edu.ifpb.livrariaremot4.model.Livro;
 import java.util.List;
 import javax.naming.InitialContext;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,14 +18,22 @@ import javax.naming.InitialContext;
 public class LivrariaApp extends javax.swing.JFrame {
     InitialContext ctx;
     private List<Livro> listaLivros;
+    private LivroTableModel livroTableModel;
+    private LivroLogTableModel livroLogTableModel;
     
     /**
      * Creates new form LivrariaApp
      */
-    public LivrariaApp() {        
+    public LivrariaApp() {
+        livroTableModel = new LivroTableModel();
+        livroLogTableModel = new LivroLogTableModel();
         initComponents();
         setTitle("LivrariaRemot4");
         this.setLocationRelativeTo(null);
+        this.alterarButton.setEnabled(false);
+        this.removerButton.setEnabled(false);
+        this.jFrame3.setTitle("Log");
+        nConsultaLabel.setText(Integer.toString(LivrariaController.getInstance().getNumeroBuscas()));
     }
 
     /**
@@ -35,30 +45,295 @@ public class LivrariaApp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
+        palavraChaveLabel = new javax.swing.JLabel();
+        palavraChaveTextField = new javax.swing.JTextField();
+        tituloRadio = new javax.swing.JRadioButton();
+        isbnRadio = new javax.swing.JRadioButton();
+        autorRadio = new javax.swing.JRadioButton();
+        pesquisarButton = new javax.swing.JButton();
+        jFrame2 = new javax.swing.JFrame();
+        tituloLabel = new javax.swing.JLabel();
+        tituloTextField = new javax.swing.JTextField();
+        editoraLabel = new javax.swing.JLabel();
+        editoraTextField = new javax.swing.JTextField();
+        isbnLabel = new javax.swing.JLabel();
+        isbnTextField = new javax.swing.JTextField();
+        edicaoLabel = new javax.swing.JLabel();
+        edicaoTextField = new javax.swing.JTextField();
+        autorLabel = new javax.swing.JLabel();
+        autorTextField = new javax.swing.JTextField();
+        confirmarButton = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jFrame3 = new javax.swing.JFrame();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         inserirButton = new javax.swing.JButton();
         alterarButton = new javax.swing.JButton();
         removerButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         livrosTable = new javax.swing.JTable();
+        consultaButton = new javax.swing.JButton();
+        atualizarButton = new javax.swing.JButton();
+        consultaLabel = new javax.swing.JLabel();
+        nConsultaLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+
+        palavraChaveLabel.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
+        palavraChaveLabel.setText("Palavra-chave");
+
+        palavraChaveTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                palavraChaveTextFieldActionPerformed(evt);
+            }
+        });
+
+        tituloRadio.setText("Titulo");
+
+        isbnRadio.setText("ISBN");
+
+        autorRadio.setText("Autor");
+
+        pesquisarButton.setText("Pesquisar");
+        pesquisarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pesquisarButtonMouseClicked(evt);
+            }
+        });
+        pesquisarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisarButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrame1Layout.createSequentialGroup()
+                        .addComponent(palavraChaveLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(palavraChaveTextField))
+                    .addGroup(jFrame1Layout.createSequentialGroup()
+                        .addComponent(tituloRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(isbnRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(autorRadio)
+                        .addGap(0, 85, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(pesquisarButton)))
+                .addContainerGap())
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(palavraChaveLabel)
+                    .addComponent(palavraChaveTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloRadio)
+                    .addComponent(isbnRadio)
+                    .addComponent(autorRadio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pesquisarButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tituloLabel.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
+        tituloLabel.setText("Titulo");
+
+        editoraLabel.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
+        editoraLabel.setText("Editora");
+
+        editoraTextField.setToolTipText("");
+        editoraTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editoraTextFieldActionPerformed(evt);
+            }
+        });
+
+        isbnLabel.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
+        isbnLabel.setText("ISBN");
+
+        isbnTextField.setToolTipText("");
+
+        edicaoLabel.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
+        edicaoLabel.setText("Edicao");
+
+        autorLabel.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
+        autorLabel.setText("Autor");
+
+        confirmarButton.setText("Confirmar");
+        confirmarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                confirmarButtonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
+        jFrame2.getContentPane().setLayout(jFrame2Layout);
+        jFrame2Layout.setHorizontalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrame2Layout.createSequentialGroup()
+                        .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(edicaoLabel)
+                            .addComponent(autorLabel))
+                        .addGap(28, 28, 28)
+                        .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(edicaoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                            .addComponent(autorTextField)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(confirmarButton))
+                    .addGroup(jFrame2Layout.createSequentialGroup()
+                        .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editoraLabel)
+                            .addComponent(isbnLabel)
+                            .addComponent(tituloLabel))
+                        .addGap(24, 24, 24)
+                        .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editoraTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(isbnTextField)
+                            .addComponent(tituloTextField))))
+                .addContainerGap())
+        );
+        jFrame2Layout.setVerticalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloLabel)
+                    .addComponent(tituloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editoraLabel)
+                    .addComponent(editoraTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(isbnLabel)
+                    .addComponent(isbnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(edicaoLabel)
+                    .addComponent(edicaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(autorLabel)
+                    .addComponent(autorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(confirmarButton))
+        );
+
+        jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(tituloRadio);
+        buttonGroup1.add(isbnRadio);
+        buttonGroup1.add(autorRadio);
+
+        jTable1.setModel(livroLogTableModel);
+        jScrollPane2.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jFrame3Layout = new javax.swing.GroupLayout(jFrame3.getContentPane());
+        jFrame3.getContentPane().setLayout(jFrame3Layout);
+        jFrame3Layout.setHorizontalGroup(
+            jFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jFrame3Layout.setVerticalGroup(
+            jFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        inserirButton.setText("Inserir");
+        inserirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifpb/livrariaremot4/img/circle24.png"))); // NOI18N
+        inserirButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inserirButtonMouseClicked(evt);
+            }
+        });
+        inserirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inserirButtonActionPerformed(evt);
+            }
+        });
 
-        alterarButton.setText("Alterar");
+        alterarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifpb/livrariaremot4/img/symbol.png"))); // NOI18N
+        alterarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                alterarButtonMouseClicked(evt);
+            }
+        });
 
-        removerButton.setText("Remover");
+        removerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifpb/livrariaremot4/img/delete.png"))); // NOI18N
+        removerButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removerButtonMouseClicked(evt);
+            }
+        });
 
-        livrosTable.setModel(new LivroTableModel()
+        livrosTable.setModel(this.livroTableModel
         );
+        livrosTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                livrosTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(livrosTable);
 
-        jButton1.setText("Consulta");
+        consultaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifpb/livrariaremot4/img/tool.png"))); // NOI18N
+        consultaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                consultaButtonMouseClicked(evt);
+            }
+        });
+        consultaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Atualizar");
+        atualizarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifpb/livrariaremot4/img/arrows.png"))); // NOI18N
+        atualizarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                atualizarButtonMouseClicked(evt);
+            }
+        });
+
+        consultaLabel.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
+        consultaLabel.setText("Consultas:");
+
+        nConsultaLabel.setText("-");
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifpb/livrariaremot4/img/interface.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,22 +354,35 @@ public class LivrariaApp extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(consultaButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(atualizarButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(consultaLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nConsultaLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inserirButton)
-                    .addComponent(alterarButton)
-                    .addComponent(removerButton)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(inserirButton)
+                        .addComponent(alterarButton)
+                        .addComponent(removerButton)
+                        .addComponent(consultaButton)
+                        .addComponent(atualizarButton))
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(consultaLabel)
+                    .addComponent(nConsultaLabel)))
         );
 
         inserirButton.getAccessibleContext().setAccessibleName("inserirButton");
@@ -116,6 +404,128 @@ public class LivrariaApp extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void inserirButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inserirButtonMouseClicked
+        this.jFrame2.setTitle("Novo Livro");
+        this.jFrame2.setSize(300, 250);
+        this.jFrame2.setLocationRelativeTo(null);
+        this.jFrame2.setVisible(true);
+    }//GEN-LAST:event_inserirButtonMouseClicked
+
+    private void editoraTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editoraTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editoraTextFieldActionPerformed
+
+    private void confirmarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmarButtonMouseClicked
+        if(this.jFrame2.getTitle().startsWith("Novo")){
+            this.livroTableModel.add(tituloTextField.getText(), 
+                                editoraTextField.getText(), 
+                                isbnTextField.getText(),
+                                edicaoTextField.getText(), 
+                                autorTextField.getText());
+        } else {
+            this.livroTableModel.update(LivrariaController.getInstance().getLivroSelecionado().getCodigo(),
+                                tituloTextField.getText(), 
+                                editoraTextField.getText(), 
+                                isbnTextField.getText(),
+                                edicaoTextField.getText(), 
+                                autorTextField.getText());
+                                this.livrosTable.clearSelection();
+        }
+        
+        this.jFrame2.dispose();
+    }//GEN-LAST:event_confirmarButtonMouseClicked
+
+    private void removerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removerButtonMouseClicked
+        int result = JOptionPane.showConfirmDialog(null,"Deseja Excluir ? ","Excluir",JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            livroTableModel.removeSelected();
+            livrosTable.clearSelection();
+            removerButton.setEnabled(false);
+            alterarButton.setEnabled(false);
+        }    
+    }//GEN-LAST:event_removerButtonMouseClicked
+
+    private void livrosTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_livrosTableMouseClicked
+        LivrariaController.getInstance().setLivroSelecionado(livrosTable.getSelectedRow());
+        removerButton.setEnabled(true);
+        alterarButton.setEnabled(true);
+        
+    }//GEN-LAST:event_livrosTableMouseClicked
+
+    private void alterarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alterarButtonMouseClicked
+        this.jFrame2.setTitle("Alterar Livro");
+        tituloTextField.setText(LivrariaController.getInstance().getLivroSelecionado().getTitulo());
+        editoraTextField.setText(LivrariaController.getInstance().getLivroSelecionado().getEditora());
+        isbnTextField.setText(LivrariaController.getInstance().getLivroSelecionado().getIsbn());
+        edicaoTextField.setText(LivrariaController.getInstance().getLivroSelecionado().getEdicao());
+        autorTextField.setText(LivrariaController.getInstance().getLivroSelecionado().getAutor());
+        this.jFrame2.setSize(300, 250);
+        this.jFrame2.setLocationRelativeTo(null);
+        this.jFrame2.setVisible(true);
+        
+    }//GEN-LAST:event_alterarButtonMouseClicked
+
+    private void palavraChaveTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palavraChaveTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_palavraChaveTextFieldActionPerformed
+
+    private void pesquisarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pesquisarButtonActionPerformed
+
+    private void consultaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultaButtonMouseClicked
+        this.jFrame1.setSize(300, 180);
+        this.jFrame1.setLocationRelativeTo(null);
+        jFrame1.setVisible(true);
+    }//GEN-LAST:event_consultaButtonMouseClicked
+
+    private void consultaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_consultaButtonActionPerformed
+
+    private void pesquisarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pesquisarButtonMouseClicked
+        String pChave = palavraChaveTextField.getText();
+        
+        if(pChave.length() > 0){
+            if(tituloRadio.isSelected()){
+                this.livroTableModel.readByTitulo(pChave);
+            }else if(isbnRadio.isSelected()){     
+                this.livroTableModel.readByIsbn(pChave);
+            }else if(autorRadio.isSelected()){
+                this.livroTableModel.readByAutor(pChave);
+            }    
+        }
+        nConsultaLabel.setText(Integer.toString(LivrariaController.getInstance().getNumeroBuscas()));
+        jFrame1.dispose();
+    }//GEN-LAST:event_pesquisarButtonMouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void atualizarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atualizarButtonMouseClicked
+        this.livroTableModel.atualizar();
+        nConsultaLabel.setText(Integer.toString(LivrariaController.getInstance().getNumeroBuscas()));
+        if(removerButton.isEnabled() || alterarButton.isEnabled()){
+            removerButton.setEnabled(false);
+            alterarButton.setEnabled(false);
+        }
+        
+        this.livrosTable.clearSelection();
+    }//GEN-LAST:event_atualizarButtonMouseClicked
+
+    private void inserirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inserirButtonActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        this.livroLogTableModel.atualizar();
+        this.jFrame3.setSize(450, 200);
+        this.jFrame3.setLocationRelativeTo(null);
+        jFrame3.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -154,12 +564,39 @@ public class LivrariaApp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alterarButton;
+    private javax.swing.JButton atualizarButton;
+    private javax.swing.JLabel autorLabel;
+    private javax.swing.JRadioButton autorRadio;
+    private javax.swing.JTextField autorTextField;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton confirmarButton;
+    private javax.swing.JButton consultaButton;
+    private javax.swing.JLabel consultaLabel;
+    private javax.swing.JLabel edicaoLabel;
+    private javax.swing.JTextField edicaoTextField;
+    private javax.swing.JLabel editoraLabel;
+    private javax.swing.JTextField editoraTextField;
     private javax.swing.JButton inserirButton;
+    private javax.swing.JLabel isbnLabel;
+    private javax.swing.JRadioButton isbnRadio;
+    private javax.swing.JTextField isbnTextField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JFrame jFrame2;
+    private javax.swing.JFrame jFrame3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable livrosTable;
+    private javax.swing.JLabel nConsultaLabel;
+    private javax.swing.JLabel palavraChaveLabel;
+    private javax.swing.JTextField palavraChaveTextField;
+    private javax.swing.JButton pesquisarButton;
     private javax.swing.JButton removerButton;
+    private javax.swing.JLabel tituloLabel;
+    private javax.swing.JRadioButton tituloRadio;
+    private javax.swing.JTextField tituloTextField;
     // End of variables declaration//GEN-END:variables
 }

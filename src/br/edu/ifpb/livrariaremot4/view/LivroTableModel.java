@@ -55,15 +55,36 @@ public class LivroTableModel extends AbstractTableModel{
     
     public void add(String titulo,String editora,String isbn,String edicao,String autor){
         LivrariaController.getInstance().addLivro(titulo, editora, isbn, edicao, autor);
+        fireTableDataChanged();
     }
     
-    public void remove(Long id){
-        LivrariaController.getInstance().removerLivro(id);
+    public void removeSelected(){
+        LivrariaController.getInstance().removerLivroSelecionado();
+        fireTableDataChanged();
     }
     
     public void update(Long id,String titulo,String editora,String isbn,String edicao,String autor){
         LivrariaController.getInstance().alterarLivro(id, titulo, editora, isbn, edicao, autor);
+        fireTableDataChanged();
     }
     
+    public void readByTitulo(String titulo){
+        LivrariaController.getInstance().consultaPorTitulo(titulo);
+        fireTableDataChanged();
+    }
     
+    public void readByIsbn(String isbn){
+        LivrariaController.getInstance().consultaPorIsbn(isbn);
+        fireTableDataChanged();
+    }
+    
+    public void readByAutor(String autor){
+        LivrariaController.getInstance().consultaPorAutor(autor);
+        fireTableDataChanged();
+    }
+    
+    public void atualizar(){
+        LivrariaController.getInstance().refreshList();
+        fireTableDataChanged();
+    }
 }

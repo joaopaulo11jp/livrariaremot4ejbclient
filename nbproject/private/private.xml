@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/joaopaulo/NetBeansProjects/LivrariaRemot4Client/src/br/edu/ifpb/livrariaremot4/controller/LivrariaController.java</file>
+            <file>file:/home/joaopaulo/NetBeansProjects/LivrariaRemot4Client/src/br/edu/ifpb/livrariaremot4/view/LivroLogTableModel.java</file>
             <file>file:/home/joaopaulo/NetBeansProjects/LivrariaRemot4Client/src/br/edu/ifpb/livrariaremot4/view/LivrariaApp.java</file>
             <file>file:/home/joaopaulo/NetBeansProjects/LivrariaRemot4Client/src/br/edu/ifpb/livrariaremot4/view/LivroTableModel.java</file>
         </group>
